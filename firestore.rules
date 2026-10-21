@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Each user (anonymous account) can only read and write their own data.
+    match /users/{userId}/{collection}/{docId} {
+      function isOwner() {
+        return request.auth != null && request.auth.uid == userId;
+      }
+      allow read, delete: if isOwner();
+      // Server-side validation: amounts must be greater than zero.
+      allow create, update: if isOwner()
+        && (!('amount' in request.resource.data) || request.resource.data.amount > 0);
+    }
+  }
+}

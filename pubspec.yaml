@@ -1,0 +1,25 @@
+name: personal_budget_tracker
+description: Personal Budget Tracker for MP101 Intermediate Laboratory Activity.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  # Firebase: "any" lets pub pick the newest versions that match your Flutter SDK.
+  firebase_core: any
+  firebase_auth: any
+  cloud_firestore: any
+  intl: '>=0.19.0 <0.21.0'
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
